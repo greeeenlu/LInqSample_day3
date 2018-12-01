@@ -19,10 +19,10 @@ namespace ZipSample.test
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
-        private IEnumerable<string> MyReverse(IEnumerable<string> source)
+        private IEnumerable<TSource> MyReverse<TSource>(IEnumerable<TSource> source)
         {
             var enumerator = source.GetEnumerator();
-            var stack = new Stack<string>();
+            var stack = new Stack<TSource>();
             while (enumerator.MoveNext())
             {
                 stack.Push(enumerator.Current);

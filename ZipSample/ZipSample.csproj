@@ -60,6 +60,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyLinq.cs" />
     <Compile Include="src\Entities.cs" />
     <Compile Include="test\CastTests.cs" />
     <Compile Include="test\ConcatTests.cs" />
