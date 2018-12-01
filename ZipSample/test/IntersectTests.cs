@@ -22,25 +22,13 @@ namespace ZipSample.test
 
         private IEnumerable<int> MyIntersect(IEnumerable<int> first, IEnumerable<int> second)
         {
+            var hashSet = new HashSet<int>(second);
             var firstEnumerator = first.GetEnumerator();
-            var secondEnumerator = second.GetEnumerator();
-            var hashSet = new HashSet<int>();
-            var alreadyReturn = new HashSet<int>();
             while (firstEnumerator.MoveNext())
             {
-                if (hashSet.Add(firstEnumerator.Current) == false 
-                    && alreadyReturn.Add(firstEnumerator.Current))
+                if (hashSet.Remove(firstEnumerator.Current))
                 {
                     yield return firstEnumerator.Current;
-                }
-            }
-
-            while (secondEnumerator.MoveNext())
-            {
-                if (hashSet.Add(secondEnumerator.Current) == false 
-                    && alreadyReturn.Add(secondEnumerator.Current))
-                {
-                    yield return secondEnumerator.Current;
                 }
             }
         }
