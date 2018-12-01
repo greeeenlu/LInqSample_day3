@@ -12,18 +12,28 @@ namespace ZipSample.test
         [TestMethod]
         public void concat_integers()
         {
-            var first = new int[] {1, 3, 5};
-            var second = new int[] {2, 4, 6};
+            var first = new int[] { 1, 3, 5 };
+            var second = new int[] { 2, 4, 6 };
 
             var actual = MyConcat(first, second).ToArray();
 
-            var expected = new int[] {1, 3, 5, 2, 4, 6};
+            var expected = new int[] { 1, 3, 5, 2, 4, 6 };
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
         private IEnumerable<int> MyConcat(IEnumerable<int> first, IEnumerable<int> second)
         {
-            throw new NotImplementedException();
+            var firstEnumerator = first.GetEnumerator();
+            while (firstEnumerator.MoveNext())
+            {
+                yield return firstEnumerator.Current;
+            }
+
+            var secondEnumerator = second.GetEnumerator();
+            while (secondEnumerator.MoveNext())
+            {
+                yield return secondEnumerator.Current;
+            }
         }
     }
 }
