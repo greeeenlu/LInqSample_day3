@@ -1,6 +1,5 @@
 ﻿using ExpectedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,15 +23,14 @@ namespace ZipSample.test
         [TestMethod]
         public void concat_string()
         {
-            var first = new [] { "1", "3", "5" };
-            var second = new [] { "2", "4", "6" };
+            var first = new[] { "1", "3", "5" };
+            var second = new[] { "2", "4", "6" };
 
             var actual = MyConcat(first, second).ToArray();
 
-            var expected = new [] { "1", "3", "5", "2", "4", "6" };
+            var expected = new[] { "1", "3", "5", "2", "4", "6" };
             expected.ToExpectedObject().ShouldEqual(actual);
         }
-
 
         [TestMethod]
         public void concat_string_MyLinq()
@@ -41,7 +39,6 @@ namespace ZipSample.test
             var second = new[] { "2", "4", "6" };
 
             var actual = first.MyConcat(second).ToArray();
-                //MyConcat(first, second).ToArray();
 
             var expected = new[] { "1", "3", "5", "2", "4", "6" };
             expected.ToExpectedObject().ShouldEqual(actual);
@@ -61,7 +58,5 @@ namespace ZipSample.test
                 yield return secondEnumerator.Current;
             }
         }
-
-
     }
 }
