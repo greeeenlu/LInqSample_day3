@@ -33,7 +33,7 @@ namespace ZipSample.test
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
-        private IEnumerable<T> MyConcat<T>(IEnumerable<T> first, IEnumerable<T> second)
+        private IEnumerable<TSource> MyConcat<TSource>(IEnumerable<TSource> first, IEnumerable<TSource> second)
         {
             var firstEnumerator = first.GetEnumerator();
             while (firstEnumerator.MoveNext())
