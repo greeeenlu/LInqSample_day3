@@ -26,7 +26,7 @@ namespace ZipSample.test
             expected.ToExpectedObject().ShouldEqual(girlAndBoyPairs);
         }
 
-        private IEnumerable<TResult> MyZip<TSource1,TSource2,TResult>(IEnumerable<TSource1> girls, IEnumerable<TSource2> keys, Func<TSource1, TSource2, TResult> selector)
+        private IEnumerable<TResult> MyZip<TFirst,TSecond,TResult>(IEnumerable<TFirst> girls, IEnumerable<TSecond> keys, Func<TFirst, TSecond, TResult> selector)
         {
             var girlEnumerator = girls.GetEnumerator();
             var keyEnumerator = keys.GetEnumerator();
