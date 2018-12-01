@@ -28,17 +28,18 @@ namespace ZipSample.test
             var result = new HashSet<int>();
             while (firstEnumerator.MoveNext())
             {
-                result.Add(firstEnumerator.Current);
+                if (result.Add(firstEnumerator.Current))
+                {
+                    yield return firstEnumerator.Current;
+                }
+                
             }
             while (secondEnumerator.MoveNext())
             {
-                result.Add(secondEnumerator.Current);
-            }
-
-            var resultEnumerator = result.GetEnumerator();
-            while (resultEnumerator.MoveNext())
-            {
-                yield return resultEnumerator.Current;
+                if (result.Add(secondEnumerator.Current))
+                {
+                    yield return secondEnumerator.Current;
+                }
             }
         }
     }
