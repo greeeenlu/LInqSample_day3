@@ -41,12 +41,12 @@ namespace ZipSample.test
             action.Should().Throw<InvalidCastException>();
         }
 
-        private IEnumerable<TSource> MyCast<TSource>(IEnumerable arrayList)
+        private IEnumerable<TResult> MyCast<TResult>(IEnumerable arrayList)
         {
             var enumerator = arrayList.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                yield return (TSource)enumerator.Current;
+                yield return (TResult)enumerator.Current;
             }
         }
     }
